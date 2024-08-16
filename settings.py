@@ -42,18 +42,6 @@ INSTALLED_APPS = [
 ]
 
 
-AUTHLIB_OAUTH_CLIENTS = {
-    '42api': {
-        'client_id': 'none',
-        'client_secret': 'none',
-        'authorize_url': 'https://api.intra.42.fr/oauth/authorize',
-        'access_token_url': 'https://api.intra.42.fr/oauth/token',
-        'userinfo_endpoint': 'https://api.intra.42.fr/v2/me',
-        'redirect_uri': 'none',
-    }
-}
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
