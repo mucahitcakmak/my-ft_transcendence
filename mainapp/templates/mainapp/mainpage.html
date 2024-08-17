@@ -11,17 +11,45 @@
 
 <!-- CSS FILE -->
 {% block cssFile %}
-<link href="{% static 'mainapp/css/login.css' %}" rel="stylesheet"></link>
+<link href="{% static 'mainapp/css/mainpage.css' %}" rel="stylesheet"></link>
 {% endblock %}
 
 
 
 <!-- JS FILE -->
-{% block jsFile %} {% endblock %}
+{% block jsFile %}
+<script src="{% static 'mainapp/js/mainpage.js' %}"></script>
+{% endblock %}
 
 
 
 <!-- BODY -->
 {% block body %}
-<h1 class="d-flex justify-content-center" style="color: white;">MAIN PAGE</h1>
+
+<!-- SAĞ VE SOL PANELİ BİRBİRİNDEN AYIR -->
+<div class="centering-element">
+    <!-- SOL PANEL -->
+    <div class="left-panel row d-flex justify-content-around">
+        <!-- TAB BAR -->
+        <nav class="nav d-flex justify-content-evenly">
+            <a href="#" class="nav-item is-active" active-color="orange">Anasayfa</a>
+            <a href="#" class="nav-item" active-color="green">Sıralama</a>
+            <a href="#" class="nav-item" active-color="blue">İstatistikler</a>
+            <a href="#" class="nav-item" active-color="red">Market</a>
+            <a href="#" class="nav-item" active-color="rebeccapurple">Profil</a>
+            <span class="nav-indicator"></span>
+        </nav>
+
+        <!-- DEGISECEK ALAN -->
+        <div class="content-area rounded">
+
+        </div>
+    </div>
+
+    <!-- SAĞ PANEL -->
+    <div class="right-panel bg-warning">
+        <h1>RIGHT PANEL</h1>
+    </div>
+</div>
+
 {% endblock %}
