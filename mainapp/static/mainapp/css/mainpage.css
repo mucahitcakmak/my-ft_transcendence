@@ -111,6 +111,7 @@
     background-color: rgba(46, 139, 86, 0.281);
 }
 
+
 /* CARD CSS */
 .card.card-stats {
   height: 54px;
@@ -182,4 +183,13 @@
   align-items: center;
   justify-content: center;
   overflow: hidden; /* Ensures the image doesn't overflow the container */
+}
+
+
+/* CHAT CSS */
+.chat-panel {
+  height: 80vh;
+  width: 18vw;
+  background-color: rgba(44, 44, 44, 0.5);
+  border-radius: 10px 10px 10px 10px; 
 }
