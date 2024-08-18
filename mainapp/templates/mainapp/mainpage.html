@@ -10,7 +10,8 @@
 
 
 <!-- CSS FILE -->
-{% block cssFile %}
+{% block cssFile %}<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css" rel="stylesheet">
 <link href="{% static 'mainapp/css/mainpage.css' %}" rel="stylesheet"></link>
 {% endblock %}
 
@@ -18,6 +19,7 @@
 
 <!-- JS FILE -->
 {% block jsFile %}
+
 <script src="{% static 'mainapp/js/mainpage.js' %}"></script>
 {% endblock %}
 
@@ -29,7 +31,7 @@
 <!-- SAĞ VE SOL PANELİ BİRBİRİNDEN AYIR -->
 <div class="centering-element">
     <!-- SOL PANEL -->
-    <div class="left-panel row d-flex justify-content-around">
+    <div class="left-panel row d-flex justify-content-evenly">
         <!-- TAB BAR -->
         <nav class="nav d-flex justify-content-evenly">
             <a href="#" class="nav-item is-active" active-color="orange">Anasayfa</a>
@@ -47,8 +49,31 @@
     </div>
 
     <!-- SAĞ PANEL -->
-    <div class="right-panel bg-warning">
-        <h1>RIGHT PANEL</h1>
+    <div class="right-panel row d-flex justify-content-evenly">
+            <!-- CARD START -->
+            <div class="card card-stats">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">mucakmak</h5>
+                      <span class="h5 font-weight-bold mb-0">Level 1</span>
+                      <span class="h5 font-weight-bold mb-0">-</span>
+                      <span class="h5 font-weight-bold mb-0">%59</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape text-white rounded-circle shadow">
+                        <img src="{% static 'img/mucakmak.jpg' %}" alt="intra-image" class="card-image">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- CARD FINISH -->
+
+            <!-- CHAT -->
+            <div class="" style="height: 50vh;"></div>
+
+
     </div>
 </div>
 

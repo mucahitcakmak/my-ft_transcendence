@@ -21,7 +21,7 @@
   max-width: 100%;
   background-color: #fff;
   padding: 0 20px;
-  height:54px;
+  height: 54px;
   width: 50vw;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -94,13 +94,14 @@
 }
 
 .left-panel {
-  height: 80vh; 
-  width: 60vw; 
+  height: 90vh;
+  width: 60vw;
   margin: 0 auto;
 }
 
 .right-panel {
-  height: 100vh; width: 20vw;
+  height: 90vh;
+  width: 20vw;
 }
 
 .content-area {
@@ -108,4 +109,77 @@
     justify-self: center;
     width: 60vw;
     background-color: rgba(46, 139, 86, 0.281);
+}
+
+/* CARD CSS */
+.card.card-stats {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  width: 18vw;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Outer shadow */
+}
+
+.col {
+  text-align: right;
+}
+
+.card-body {
+  padding: 0 1rem; /* Reduce padding */
+  display: flex;
+  align-items: center;
+}
+
+.card-body .row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  text-align: right;
+}
+
+.card-title {
+  font-size: .7875rem; /* Smaller font size */
+  margin: 0;
+  line-height: 1.2; /* Adjusted line-height */
+  text-align: right;
+  letter-spacing: .1rem;
+}
+
+.h5.font-weight-bold {
+  font-size: .6875rem; /* Smaller font size */
+  margin: 0;
+  line-height: 1.2; /* Adjusted line-height */
+  text-align: right;
+}
+
+.icon-shape {
+  display: flex;
+  padding: 0; /* Remove padding for the image */
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* Remove background color */
+}
+
+.icon-shape i {
+  font-size: 1rem; /* Adjusted icon size */
+}
+
+.card-image {
+  width: 100%; /* Ensures the image fills the container */
+  height: 100%; /* Ensures the image fills the container */
+  object-fit: cover; /* Covers the container while keeping the aspect ratio */
+  image-rendering: -webkit-optimize-contrast; /* Improves image rendering */
+  image-rendering: crisp-edges; /* For sharp edges */
+  border-radius: 50%; /* Keeps the image circular */
+}
+
+.icon {
+  width: 45px; /* Adjust to fit the new image */
+  height: 45px; /* Adjust to fit the new image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensures the image doesn't overflow the container */
 }
