@@ -19,16 +19,16 @@
   position: relative;
   overflow: hidden;
   max-width: 100%;
-  background-color: #fff;
+  background-color: rgb(24, 26, 27);
   padding: 0 20px;
   height: 54px;
   width: 50vw;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 .nav-item {
-  color: #83818c;
+  color: #7b7a80;
   padding: 15px;
   text-decoration: none;
   -webkit-transition: .1s;
@@ -46,7 +46,7 @@
     left: 0;
     width: 100%;
     height: 5px;
-    background-color: #dfe2ea; /* Bu varsayılan rengi kontrol edin */
+    background-color: rgb(157, 157, 163); /* Bu varsayılan rengi kontrol edin */
     border-radius: 8px 8px 0 0;
     opacity: 0;
     transition: .1s;
@@ -63,7 +63,7 @@
 }
 
 .nav-item:not(.is-active):hover {
-  color: #333;
+  color: rgb(157, 157, 163);
 }
 
 .nav-indicator {
@@ -109,7 +109,7 @@
     height: 65vh;
     justify-self: center;
     width: 60vw;
-    background-color: rgba(46, 139, 86, 0.281);
+    /*background-color: rgba(46, 139, 86, 0.281);*/
 }
 
 
@@ -120,8 +120,9 @@
   align-items: center;
   width: 260px;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,.5);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Outer shadow */
+  background-color: rgb(24, 26, 27);
+  border: none;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 .col {
@@ -146,12 +147,14 @@
 .card-title {
   font-size: .7875rem; /* Smaller font size */
   margin: 0;
+  color: #9f9d98;
   line-height: 1.2; /* Adjusted line-height */
   text-align: right;
   letter-spacing: .1rem;
 }
 
 .h5.font-weight-bold {
+  color: #dbdad7;
   font-size: .6875rem; /* Smaller font size */
   margin: 0;
   line-height: 1.2; /* Adjusted line-height */
@@ -199,61 +202,36 @@
 
 
 /* BUTON  CSS */
-.box-1 { background-color: #FF6766; }
-
-.btn {
-	line-height: 50px;
-	height: 50px;
-	text-align: center;
-	width: 250px;
-	cursor: pointer;
+.cool-button {
+  position: relative;
+  background: transparent;
+  padding: 15px 45px;
+  border: none;
+  font-size: 1.5rem;
+  color: #e0ffff;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
 }
-
-.btn-one {
-	color: #FFF;
-	transition: all 0.3s;
-	position: relative;
+.cool-button:active{
+  transform: scale(0.95);
 }
-.btn-one span {
-	transition: all 0.3s;
+.cool-button::before{
+  content: '';
+  position: absolute;
+  inset: 0px 50px;
+  background: #42455a;
+  transition: inset 350ms ease;
+  z-index: -1;
 }
-.btn-one::before {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	opacity: 0;
-	transition: all 0.3s;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: rgba(255,255,255,0.5);
-	border-bottom-color: rgba(255,255,255,0.5);
-	transform: scale(0.1, 1);
+.cool-button:hover::before{
+  inset: -20px 0px;
+  background: #00c2cb;
 }
-.btn-one:hover span {
-	letter-spacing: 2px;
-}
-.btn-one:hover::before {
-	opacity: 1;	
-	transform: scale(1, 1);	
-}
-.btn-one::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	transition: all 0.3s;
-	background-color: rgba(255,255,255,0.1);
-}
-.btn-one:hover::after {
-	opacity: 0;	
-	transform: scale(0.1, 1);
+.cool-button::after{
+ content: '';
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
 }
