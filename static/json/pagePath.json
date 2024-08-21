@@ -1,0 +1,23 @@
+{
+    "routers": {
+      "page1": "/anasayfa",
+      "page2": "/siralama",
+      "page3": "/istatistik",
+      "page4": "/arkadaslar",
+      "page5": "/profil"
+    },
+    "pageName": {
+      "page1": "Anasayfa",
+      "page2": "Sıralama",
+      "page3": "İstatistik",
+      "page4": "Arkadaşlar",
+      "page5": "Profil"
+    },
+    "pagePath": {
+        "page1": "../templates/pages/anasayfa.html",
+        "page2": "../templates/pages/siralama.html",
+        "page3": "../templates/pages/istatistik.html",
+        "page4": "../templates/pages/arkadaslar.html",
+        "page5": "../templates/pages/profil.html"
+    }
+  }
