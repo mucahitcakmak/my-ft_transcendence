@@ -1,0 +1,108 @@
+
+.leaderboard{
+    max-width: 65vw;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    padding: 1em;
+    padding-top: 1em;
+}
+.theme-img{
+    width: 20em;
+    border-radius: 5;
+}
+/* .description{
+    display: inline-block;
+	padding: .7em 45%;
+    margin: 1em;
+    color: white;
+    transform: translateY(-5em);
+} */
+
+
+table {
+    margin-top: 1em;
+    width: 65em;
+    color: rgb(131, 128, 128);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+table thead{
+    opacity: .7;
+}
+.table-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    border-radius: 50%;
+}
+
+.table-p {
+    width: 7em;
+    height: 1em;
+}
+
+table td{
+    max-width: 2em;
+    padding: 1em;
+    text-align: center;
+}
+
+
+tbody tr:hover{
+    transform: scale(1.025);
+    transition: .2s ease-in-out;
+}
+tbody tr td:nth-child(2) p{
+    display: inline-block;
+    transform: translateY(-.5em);
+    padding-left: .5em;
+    text-align: left;
+}
+
+table td:nth-child(2){
+    max-width: 5em;
+}
+
+tbody tr:nth-child(even){
+    background-color: rgba(17, 0, 17, 0.322);
+}
+
+@media(max-width:860px){
+    .leaderboard{
+        padding: 0;
+    }
+    .theme-img{
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+    }
+    .description{
+        display: block;
+        transform: translateY(0);
+    }
+    table{
+        max-width: 150vw;
+        overflow-x: scroll;
+
+    }
+}
+
+/* TABLODAKİ İLK 3 ELEMENT */
+table tbody tr:nth-child(1) {
+    color: gold;
+    font-weight: 800;
+}
+
+table tbody tr:nth-child(2) {
+    color: silver;
+    font-weight: 800;
+}
+
+table tbody tr:nth-child(3) {
+    color: #cd7f32;
+    font-weight: 800;
+}

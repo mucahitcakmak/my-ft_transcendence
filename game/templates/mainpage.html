@@ -13,6 +13,7 @@
 {% block cssFile %}<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css" rel="stylesheet">
 <link href="{% static 'css/mainpage.css' %}" rel="stylesheet"></link>
+<link href="{% static 'css/siralama.css' %}" rel="stylesheet"></link>
 {% endblock %}
 
 
@@ -21,6 +22,7 @@
 {% block jsFile %}
 
 <script src="{% static 'js/mainpage.js' %}"></script>
+<script src="{% static 'js/siralama.js' %}"></script>
 {% endblock %}
 
 
@@ -34,11 +36,11 @@
     <div class="left-panel row d-flex justify-content-evenly">
         <!-- TAB BAR -->
         <nav class="nav d-flex justify-content-evenly">
-          <a id="anasayfaBTN" href="" class="nav-item is-active" data-target-path="/anasayfa" active-color="orange">Anasayfa</a>
-          <a id="siralamaBTN" href="" class="nav-item" data-target-path="/siralama" active-color="green">Sıralama</a>
-          <a id="istatistikBTN" href="" class="nav-item" data-target-path="/istatistikler" active-color="blue">İstatistikler</a>
-          <a id="arkadaslarBTN" href="" class="nav-item" data-target-path="/arkadaslar" active-color="red">Arkadaşlar</a>
-          <a id="profilBTN" href="" class="nav-item" data-target-path="/profil" active-color="rebeccapurple">Profil</a>
+          <a id="homeBTN" href="" class="nav-item is-active" data-target-path="/home" active-color="orange">Home</a>
+          <a id="leaderboardBTN" href="" class="nav-item" data-target-path="/leaderboard" active-color="green">Leaderboard</a>
+          <a id="statisticsBTN" href="" class="nav-item" data-target-path="/statistics" active-color="blue">Statistics</a>
+          <a id="friendsBTN" href="" class="nav-item" data-target-path="/friends" active-color="red">Friends</a>
+          <a id="profileBTN" href="" class="nav-item" data-target-path="/profile" active-color="rebeccapurple">Profile</a>
           <span class="nav-indicator"></span>
         </nav>
 

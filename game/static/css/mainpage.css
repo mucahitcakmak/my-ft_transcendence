@@ -35,7 +35,7 @@
   transition: .1s;
   margin: 0 6px;
   z-index: 1;
-  font-family: 'DM Sans', sans-serif;
+  /*font-family: 'DM Sans', sans-serif;*/
   font-weight: 500;
   position: relative;
 }
@@ -101,7 +101,7 @@
 
 .right-panel {
   height: 90vh;
-  width: 20vw;
+  width: 21vw;
 }
 
 .content {
@@ -202,36 +202,51 @@
 
 
 /* BUTON  CSS */
-.cool-button {
+.cool-btn {
   position: relative;
-  background: transparent;
-  padding: 15px 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  /*font-family: "Rowdies", sans-serif;*/
+  color: #111;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 10px;
   border: none;
-  font-size: 1.5rem;
-  color: #e0ffff;
-  font-weight: 500;
-  cursor: pointer;
-  overflow: hidden;
-  z-index: 1;
+  transition: all 300ms;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
 }
-.cool-button:active{
-  transform: scale(0.95);
+
+.cool-btn:hover {
+  background-color: transparent;
+  color: #fff;
+  border-radius: 10px;
 }
-.cool-button::before{
+
+.cool-btn::after {
   content: '';
   position: absolute;
-  inset: 0px 50px;
-  background: #42455a;
-  transition: inset 350ms ease;
-  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 3px solid #fff;
+  transform: scale(1.1, 1.3);
+  opacity: 0;
+  transition: all 500ms;
 }
-.cool-button:hover::before{
-  inset: -20px 0px;
-  background: #00c2cb;
+
+.cool-btn:hover::after {
+  transform: scale(1, 1);
+  opacity: 1;
 }
-.cool-button::after{
- content: '';
-  position: absolute;
-  inset: 3px;
-  z-index: -1;
+
+.cool-btn:active {
+  transform: scale(.9);
 }

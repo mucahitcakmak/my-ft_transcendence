@@ -1,14 +1,14 @@
 // URL yapılarını ve içeriklerini yönetmek için bir nesne tanımlayalım
 const routes = {
-    "/anasayfa": { title: "Anasayfa", contentPath: "../templates/pages/anasayfa.html" },
+    "/home": { title: "Home", contentPath: "../templates/pages/home.html" },
 
     // alt dalları denemek için test ediliyor. şuanda html dosyası bulunmuyor.
-    "/anasayfa/yz-ile-oyna": { title: "YZ ile Oyna", contentPath: "../templates/pages/yz-ile-oyna.html" },
+    "/home/play-against-ai": { title: "Play Against AI", contentPath: "../templates/pages/play-against-ai.html" },
     
-    "/siralama": { title: "Siralama", contentPath: "../templates/pages/siralama.html" },
-    "/istatistikler": { title: "Istatistikler", contentPath: "../templates/pages/istatistikler.html" },
-    "/arkadaslar": { title: "Arkadaslar", contentPath: "../templates/pages/arkadaslar.html" },
-    "/profil": { title: "Profil", contentPath: "../templates/pages/profil.html" },
+    "/leaderboard": { title: "Leaderboard", contentPath: "../templates/pages/leaderboard.html" },
+    "/statistics": { title: "Statistics", contentPath: "../templates/pages/statistics.html" },
+    "/friends": { title: "Friends", contentPath: "../templates/pages/friends.html" },
+    "/profile": { title: "Profile", contentPath: "../templates/pages/profile.html" },
 };
 
 

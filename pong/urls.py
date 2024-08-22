@@ -19,6 +19,6 @@ from django.urls import path, include
 from django.shortcuts import redirect
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', lambda request: redirect('/anasayfa', permanent=True)),
+    path('', lambda request: redirect('/home', permanent=True)),
     path('', include("game.urls")),
 ]
