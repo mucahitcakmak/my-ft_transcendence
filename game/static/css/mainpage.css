@@ -200,6 +200,15 @@
   border-radius: 10px 10px 10px 10px; 
 }
 
+/* Content animasyonlu yükleme */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.15s ease-in;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
 
 /* BUTON  CSS */
 .cool-btn {
@@ -212,7 +221,7 @@
   margin-top: 15px;
   margin-bottom: 15px;
   background-color: #fff;
-  /*font-family: "Rowdies", sans-serif;*/
+  font-family: "Rowdies", sans-serif;
   color: #111;
   font-size: 18px;
   letter-spacing: 1px;
@@ -220,7 +229,7 @@
   border-radius: 10px;
   border: none;
   transition: all 300ms;
-  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 8px rgba(0, 0, 0, 0.3);
 }
 
 .cool-btn:hover {

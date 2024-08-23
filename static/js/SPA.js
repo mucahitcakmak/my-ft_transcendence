@@ -14,13 +14,23 @@ const routes = {
 
 window.onload = function () {
     function updatePageContent(html, pageTitle, urlPath) {
-        document.getElementById("content").innerHTML = html;
+        const contentElement = document.getElementById("content");
+        
+        // Önce içeriğin görünürlüğünü sıfırla
+        contentElement.classList.remove("show");
+        
+        // Yeni içeriği yükle
+        contentElement.innerHTML = html;
         document.title = pageTitle;
         window.history.pushState({ "html": html, "pageTitle": pageTitle }, pageTitle, urlPath);
+        
+        // Yüklemeden hemen sonra fade-in animasyonunu tetikle
+        setTimeout(() => {
+            contentElement.classList.add("show");
+        }, 10); // 10ms gecikme ile animasyonu başlat
     }
 
     function loadPageBasedOnPath(pathname) {
-        // pathName için doğru yönlendirmeyi kontrol ediyoruz
         if (routes[pathname]) {
             fetch(routes[pathname].contentPath)
                 .then(response => response.text())
@@ -29,27 +39,28 @@ window.onload = function () {
                 });
         } else {
             console.error("404: Page not found");
-            // Buraya 404 sayfası için bir içerik yükleyebilirsiniz
         }
     }
 
-    // Tıklama olaylarını dinamik olarak yönetiyoruz
     document.querySelectorAll("[data-url]").forEach(button => {
         button.addEventListener("click", function (event) {
-            event.preventDefault(); // Sayfanın yenilenmesini önler
+            event.preventDefault(); 
             const urlPath = this.getAttribute("data-url");
             loadPageBasedOnPath(urlPath);
         });
     });
 
-    // Sayfa yüklendiğinde mevcut path'i kontrol et
     loadPageBasedOnPath(window.location.pathname);
 
-    // Tarayıcıdaki geri/ileri butonları kullanıldığında sayfa içeriğini günceller
     window.onpopstate = function (event) {
         if (event.state) {
-            document.getElementById("content").innerHTML = event.state.html;
+            const contentElement = document.getElementById("content");
+            contentElement.classList.remove("show");
+            contentElement.innerHTML = event.state.html;
             document.title = event.state.pageTitle;
+            setTimeout(() => {
+                contentElement.classList.add("show");
+            }, 10);
         }
     };
 };
