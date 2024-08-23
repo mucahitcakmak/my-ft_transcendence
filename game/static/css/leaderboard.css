@@ -1,4 +1,3 @@
-
 .leaderboard{
     max-width: 65vw;
     margin-right: auto;
@@ -7,18 +6,11 @@
     padding: 1em;
     padding-top: 1em;
 }
+
 .theme-img{
     width: 20em;
     border-radius: 5;
 }
-/* .description{
-    display: inline-block;
-	padding: .7em 45%;
-    margin: 1em;
-    color: white;
-    transform: translateY(-5em);
-} */
-
 
 table {
     margin-top: 1em;
@@ -31,6 +23,7 @@ table {
 table thead{
     opacity: .7;
 }
+
 .table-img {
     width: 50px;
     height: 50px;
@@ -41,8 +34,10 @@ table thead{
 }
 
 .table-p {
-    width: 7em;
+    width: 8em;
+    padding-left: 1em;
     height: 1em;
+    text-align: start;
 }
 
 table td{
@@ -50,7 +45,6 @@ table td{
     padding: 1em;
     text-align: center;
 }
-
 
 tbody tr:hover{
     transform: scale(1.025);
@@ -92,17 +86,17 @@ tbody tr:nth-child(even){
 }
 
 /* TABLODAKİ İLK 3 ELEMENT */
-table tbody tr:nth-child(1) {
+.leaderboard tbody tr:nth-child(1) {
     color: gold;
     font-weight: 800;
 }
 
-table tbody tr:nth-child(2) {
+.leaderboard table tbody tr:nth-child(2) {
     color: silver;
     font-weight: 800;
 }
 
-table tbody tr:nth-child(3) {
+.leaderboard table tbody tr:nth-child(3) {
     color: #cd7f32;
     font-weight: 800;
 }

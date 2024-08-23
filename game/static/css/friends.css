@@ -1,0 +1,17 @@
+/* Leaderboarddan çekilen csslerde friends tablosu için ekstra düzeltmeler */
+.friends{
+    max-width: 65vw;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    padding: 1em;
+    padding-top: 1em;
+}
+
+.friends .table-p {
+    margin-left: 1em;
+}
+
+.friends .table-button-element {
+    padding: 0;
+}
