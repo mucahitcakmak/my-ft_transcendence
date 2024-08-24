@@ -7,7 +7,7 @@
 
 .stats-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 sütun oluştur */
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     row-gap: 50px;
 }
@@ -20,7 +20,7 @@
     align-items: center;
     padding: 15px;
     color: white;
-    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2); /* Beyaz parlak gölge */
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
     max-width: 20vw;
     min-height: 15vh;
 }
@@ -68,10 +68,10 @@
     border-radius: 50%;
     background: linear-gradient(87deg, #f5365c 0%, #f56036 100%);
     color: white;
-    box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.05); /* Beyaz parlak gölge */
+    box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.05);
 }
 .stats-cards .icon-shape i {
     color: white;
-    font-size: 32px; /* Bu satırı ekleyin veya mevcutsa değeri artırın */
+    font-size: 32px;
     margin-top: 8px;
 }

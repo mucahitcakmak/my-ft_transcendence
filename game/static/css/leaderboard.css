@@ -48,6 +48,7 @@ table tbody tr:hover {
     padding-left: 1em;
     height: 1em;
     text-align: start;
+	font-size: calc(var(--base-font-size) + 3px);
 }
 
 table tbody tr td:nth-child(2) {
@@ -81,7 +82,7 @@ tbody tr:nth-child(even) {
     height: 13vh;
 }
 .leaderboard tbody tr:nth-child(1) td p, .leaderboard tbody tr:nth-child(1) td {
-    font-size: calc(var(--base-font-size) + 6px);
+    font-size: calc(var(--base-font-size) + 8px);
 
 }
 .leaderboard tbody tr:nth-child(1) td img {
@@ -95,7 +96,7 @@ tbody tr:nth-child(even) {
     height: 11vh;
 }
 .leaderboard tbody tr:nth-child(2) td p, .leaderboard tbody tr:nth-child(2) td {
-    font-size: calc(var(--base-font-size) + 4px);
+    font-size: calc(var(--base-font-size) + 6px);
 }
 .leaderboard tbody tr:nth-child(2) td img {
     width: 60px; height: 60px;
@@ -107,7 +108,7 @@ tbody tr:nth-child(even) {
     height: 9vh;
 }
 .leaderboard tbody tr:nth-child(3) td p, .leaderboard tbody tr:nth-child(3) td {
-    font-size: calc(var(--base-font-size) + 2px);
+    font-size: calc(var(--base-font-size) + 4px);
 }
 .leaderboard tbody tr:nth-child(3) td img {
     width: 55px; height: 55px;
