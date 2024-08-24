@@ -78,14 +78,37 @@ tbody tr:nth-child(even) {
 .leaderboard tbody tr:nth-child(1) td {
     color: gold;
     font-weight: 800;
+    height: 13vh;
 }
+.leaderboard tbody tr:nth-child(1) td p, .leaderboard tbody tr:nth-child(1) td {
+    font-size: calc(var(--base-font-size) + 6px);
+
+}
+.leaderboard tbody tr:nth-child(1) td img {
+    width: 65px; height: 65px;
+}
+
 
 .leaderboard tbody tr:nth-child(2) td {
     color: silver;
     font-weight: 800;
+    height: 11vh;
+}
+.leaderboard tbody tr:nth-child(2) td p, .leaderboard tbody tr:nth-child(2) td {
+    font-size: calc(var(--base-font-size) + 4px);
+}
+.leaderboard tbody tr:nth-child(2) td img {
+    width: 60px; height: 60px;
 }
 
 .leaderboard tbody tr:nth-child(3) td {
     color: #cd7f32;
     font-weight: 800;
+    height: 9vh;
+}
+.leaderboard tbody tr:nth-child(3) td p, .leaderboard tbody tr:nth-child(3) td {
+    font-size: calc(var(--base-font-size) + 2px);
+}
+.leaderboard tbody tr:nth-child(3) td img {
+    width: 55px; height: 55px;
 }
