@@ -4,7 +4,6 @@ const routes = {
 
     // alt dalları denemek için test ediliyor. şuanda html dosyası bulunmuyor.
     "/home/play-against-ai": { title: "Play Against AI", contentPath: "../templates/pages/play-against-ai.html" },
-    
     "/leaderboard": { title: "Leaderboard", contentPath: "../templates/pages/leaderboard.html" },
     "/statistics": { title: "Statistics", contentPath: "../templates/pages/statistics.html" },
     "/friends": { title: "Friends", contentPath: "../templates/pages/friends.html" },

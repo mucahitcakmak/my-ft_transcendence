@@ -4,8 +4,6 @@
     margin-right: auto;
     margin-left: auto;
     display: block;
-    padding: 1em;
-    padding-top: 1em;
 }
 
 .friends .table-p {
@@ -14,4 +12,15 @@
 
 .friends .table-button-element {
     padding: 0;
+}
+
+/* 'Online' veya 'Offline' veri için özelleştirme */
+.friends td[data-status="Online"] {
+    color: rgb(88, 192, 148);
+    font-weight: bold;
+}
+
+.friends td[data-status="Offline"] {
+    color: 	rgb(228, 92, 92);
+    font-weight: bold;
 }

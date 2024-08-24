@@ -21,7 +21,9 @@
   max-width: 100%;
   background-color: rgb(24, 26, 27);
   padding: 0 20px;
-  height: 54px;
+  min-height: 54px;
+  max-height: 90px;
+  height: 5vh;
   width: 50vw;
   border-radius: 20px;
   box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
@@ -109,20 +111,24 @@
     height: 65vh;
     justify-self: center;
     width: 60vw;
-    /*background-color: rgba(46, 139, 86, 0.281);*/
+    background-color: rgba(46, 139, 86, 0.1);
 }
 
 
 /* CARD CSS */
 .card.card-stats {
-  height: 54px;
   display: flex;
   align-items: center;
-  width: 260px;
   border-radius: 20px;
   background-color: rgb(24, 26, 27);
   border: none;
   box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+  padding: 0 20px;
+  min-height: 54px;
+  max-height: 90px;
+  height: 5vh;
+
+  width: 16vw;
 }
 
 .col {
@@ -223,7 +229,6 @@
   background-color: #fff;
   font-family: "Rowdies", sans-serif;
   color: #111;
-  font-size: 18px;
   letter-spacing: 1px;
   text-decoration: none;
   border-radius: 10px;
@@ -258,4 +263,69 @@
 
 .cool-btn:active {
   transform: scale(.9);
+}
+
+/* Ekran boyutuna göre otomatik yazı fontunu büyütme */
+@media (max-width: 860px) {
+  .nav a  {
+      font-size: 16px;
+  }
+  .card-title {
+    font-size: .6875rem;
+  }
+  .h5.font-weight-bold {
+    font-size: .5875rem;
+  }
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1920px) {
+  .nav a {
+      font-size: 16px;
+  }
+  .card-title {
+    font-size: .7875rem;
+  }
+  .h5.font-weight-bold {
+    font-size: .6875rem;
+  }
+  .icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (min-width: 1921px) and (max-width: 2560px) {
+  .nav a {
+      font-size: 19px;
+  }
+  .card-title {
+    font-size: .9875rem;
+  }
+  .h5.font-weight-bold {
+    font-size: .8875rem;
+  }
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (min-width: 2561px) {
+  .nav a {
+      font-size: 25px;
+  }
+  .card-title {
+    font-size: 1.2875rem;
+  }
+  .h5.font-weight-bold {
+    font-size: 1.1875rem;
+  }
+  .icon {
+    width: 76px;
+    height: 76px;
+  }
 }
