@@ -31,6 +31,7 @@
 		<script src="/js/mylib.js"></script>
 		<script src="/js/SPA.js"></script>
 		<script src="/js/mainpage.js"></script>
+		<script src="/js/mainpage_chat.js"></script>
 		<script src="/js/leaderboard.js"></script>
 		<script src="/js/friends.js"></script>
 		<script src="/js/profile.js"></script>
@@ -67,12 +68,18 @@
 						<div class="row">
 						<div class="col">
 							<h5 class="card-title text-uppercase username"></h5>
-							<span class="h5 font-weight-bold mb-0" style="color: #5f5d59;">Score:</span>
-							<span class="h5 font-weight-bold mb-0">159</span>
-							<span class="h5 font-weight-bold mb-0" style="color: #5f5d59;">Rank:</span>
-							<span class="h5 font-weight-bold mb-0">31</span>
+							<div class="score-rank-group">
+								<div class="score">
+									<span class="h5 font-weight-bold mb-0" style="color: #5f5d59;">Score:</span>
+									<span class="h5 font-weight-bold mb-0">159</span>
+								</div>
+								<div class="rank">
+									<span class="h5 font-weight-bold mb-0" style="color: #5f5d59;">Rank:</span>
+									<span class="h5 font-weight-bold mb-0">31</span>
+								</div>
+							</div>
 						</div>
-						<div class="col">
+						<div class="col right-card-col">
 						<div class="icon icon-shape text-white rounded-circle shadow">
 							<img src="" alt="intra-image" class="card-image panel-pic">
 						</div>
@@ -80,9 +87,30 @@
 						</div>
 					</div>
 				</div>
-				<!-- CARD FINISH -->
 				<!-- CHAT -->
+
 				<div class="chat-panel">
+
+
+					<div class="match-chat-container">
+						<div class="match-general-chat-btn text-white p-2 rounded user-select-none" data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="col justify-content-start d-flex align-items-center" style="text-align: start;">
+								<div class="dropdown-arrow">
+									<i class="fi fi-br-caret-left"></i>
+								</div>
+								<div class="dropdown-chat-name">
+									General Chat
+								</div>
+							</div>
+						</div>
+						<ul class="dropdown-menu match-dropdown-menu">
+							<li><a class="dropdown-item" href="#">musteri</a></li>
+							<li><a class="dropdown-item" href="#">ogenc</a></li>
+						</ul>
+					</div>					
+
+
+					
 					<div class="chat-container">
 						<div id="chat-scroll" class="chat-scroll">
 							<div class="chat-log text-white" id="chat-log">
@@ -90,7 +118,7 @@
 							</div>
 							</div>
 						<div class="input-container">
-								<textarea maxlength="35" rows="1" id="message-input" placeholder="Type your message..." rows="1"></textarea >
+								<textarea maxlength="35" rows="1" id="message-input" placeholder="Message..." rows="1"></textarea >
 								<button id="send-button" class="cool-btn">Send</button>
 						</div>
 					</div>
