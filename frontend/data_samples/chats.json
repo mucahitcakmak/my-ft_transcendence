@@ -5,13 +5,13 @@
         "messages": [
             {
                 "message_id": 1,
-                "sender_id": 1,
+                "sender_id": 2,
                 "message": "sa mucox",
                 "timestamp": "2024-09-29T10:00:00Z"
             },
             {
                 "message_id": 2,
-                "sender_id": 2,
+                "sender_id": 1,
                 "message": "as farukx",
                 "timestamp": "2024-09-29T10:20:00Z"
             }

@@ -95,7 +95,7 @@
 
 .match-general-chat-btn {
   cursor: pointer;
-  height: 5vh;
+  height: 6vh;
   text-align: center;
   display: flex;
   align-items: center;
@@ -131,6 +131,10 @@
   transform: translateY(0);
 }
 
+.match-dropdown-menu .li {
+  max-height: 5vh;
+}
+
 .dropdown-arrow {
   width: 40px;
   height: 40px;
@@ -151,14 +155,13 @@
   font-size: calc(var(--base-font-size) + 3px);
 }
 
-/* Styling for the general chat image */
 .chat-img-general {
-  width: 40px;               /* Set desired width */
-  height: 40px;              /* Set desired height */
-  object-fit: cover;         /* Ensure proper scaling and cropping */
-  border-radius: 50%;        /* Make it circular */
-  margin-left: 10px;         /* Add spacing between arrow and image */
-  flex-shrink: 0;            /* Prevent shrinking */
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 10px;
+  flex-shrink: 0;
 }
 
 .match-dropdown-menu .chat-img {
@@ -170,7 +173,6 @@
   flex-shrink: 0;
 }
 
-/* Remove click effect for .dropdown-item */
 .match-dropdown-item .dropdown-item:active {
   background-color: transparent !important;
   color: inherit;
@@ -188,7 +190,6 @@
   color: white;
 }
 
-/* General styling for the dropdown item */
 .match-dropdown-item {
   padding: 10px;
   transition: background-color 0.3s ease;
@@ -196,11 +197,13 @@
 }
 
 .match-dropdown-item:hover {
-  background-color: #23282e;  /* Apply hover effect to the whole item */
+  background-color: #23282e;
 }
 
-/* Click effect for the entire dropdown item, including the image */
 .match-dropdown-item:active {
-  background-color: #1b2027;  /* Darkened background on click */
+  background-color: #1b2027;
 }
 
+.inactive {
+  background-color: #23282e;
+}
