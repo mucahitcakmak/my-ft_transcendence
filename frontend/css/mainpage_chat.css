@@ -107,30 +107,28 @@
 }
 
 .match-general-chat-btn:hover {
-  background-color: #1b2027; /* Lightened red on hover */
-}
-
-.match-general-chat-btn i {
-  margin-right: 0px;
+  background-color: #1b2027; /* Lightened on hover */
 }
 
 .match-dropdown-menu {
   position: absolute;
-  top: 0px; /* Adjust based on the distance from the top of the yellow box */
-  left: -300px; /* Adjust based on how far left you want the dropdown */
-  width: 300px;
-  background-color: #ffffff;
+  top: 0px;
+  left: -17vw;
+  width: calc(17vw - 10px);
+  background-color: #11151A;
+  outline-style: solid;
+  outline-color: #4b4b4b83;
   border-radius: 5px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  display: none; /* Hidden by default */
+  display: none;
   opacity: 0;
-  transform: translateY(10px); /* Adds a slide-down effect */
+  transform: translateY(10px);
 }
 
 .match-chat-container .dropdown-menu.show {
   display: block;
   opacity: 1;
-  transform: translateY(0); /* Ensures it appears smoothly at the correct location */
+  transform: translateY(0);
 }
 
 .dropdown-arrow {
@@ -150,10 +148,59 @@
 .dropdown-chat-name {
   margin-bottom: 5px;
   color: #929292;
-  font-size: calc(var(--base-font-size) + 6px);
+  font-size: calc(var(--base-font-size) + 3px);
 }
 
-.match-general-chat-btn:active {
-  background-color: #23282e; /* Darker red when clicked */
+/* Styling for the general chat image */
+.chat-img-general {
+  width: 40px;               /* Set desired width */
+  height: 40px;              /* Set desired height */
+  object-fit: cover;         /* Ensure proper scaling and cropping */
+  border-radius: 50%;        /* Make it circular */
+  margin-left: 10px;         /* Add spacing between arrow and image */
+  flex-shrink: 0;            /* Prevent shrinking */
+}
+
+.match-dropdown-menu .chat-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Remove click effect for .dropdown-item */
+.match-dropdown-item .dropdown-item:active {
+  background-color: transparent !important;
+  color: inherit;
+  pointer-events: none;
+}
+
+.match-dropdown-item a {
+  color: #929292;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: calc(var(--base-font-size) + 1px);
+}
+
+.match-dropdown-item:hover a {
+  color: white;
+}
+
+/* General styling for the dropdown item */
+.match-dropdown-item {
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.match-dropdown-item:hover {
+  background-color: #23282e;  /* Apply hover effect to the whole item */
+}
+
+/* Click effect for the entire dropdown item, including the image */
+.match-dropdown-item:active {
+  background-color: #1b2027;  /* Darkened background on click */
 }
 

@@ -92,25 +92,33 @@
 				<div class="chat-panel">
 
 
-					<div class="match-chat-container">
+					<div class="match-chat-container user-select-none">
 						<div class="match-general-chat-btn text-white p-2 rounded user-select-none" data-bs-toggle="dropdown" aria-expanded="false">
-							<div class="col justify-content-start d-flex align-items-center" style="text-align: start;">
-								<div class="dropdown-arrow">
-									<i class="fi fi-br-caret-left"></i>
-								</div>
-								<div class="dropdown-chat-name">
-									General Chat
-								</div>
+						  <div class="col justify-content-start d-flex align-items-center" style="text-align: start;">
+							<div class="dropdown-arrow">
+							  <i class="fi fi-br-caret-left"></i>
 							</div>
+							<img src="/img/world.png" class="chat-img-general shadow me-2" alt="Profile Image">
+							<div class="dropdown-chat-name">
+							  General Chat
+							</div>
+						  </div>
 						</div>
-						<ul class="dropdown-menu match-dropdown-menu">
-							<li><a class="dropdown-item" href="#">musteri</a></li>
-							<li><a class="dropdown-item" href="#">ogenc</a></li>
+						<ul class="dropdown-menu match-dropdown-menu" id="chat-list">
+						  <li class="match-dropdown-item d-flex align-items-center">
+							<img src="/img/world.png" class="chat-img shadow me-2" alt="Profile Image">
+							<a class="">General Chat</a>
+						  </li>
+						  <li class="match-dropdown-item d-flex align-items-center">
+							<img src="/img/ogenc.jpeg" class="chat-img shadow me-2" alt="Profile Image">
+							<a class="" href="#">ogenc</a>
+						  </li>
 						</ul>
-					</div>					
+					  </div>
 
+		
+					  
 
-					
 					<div class="chat-container">
 						<div id="chat-scroll" class="chat-scroll">
 							<div class="chat-log text-white" id="chat-log">
