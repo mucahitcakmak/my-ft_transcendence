@@ -7,6 +7,10 @@
             <button class="cool-btn" onclick="toggleEdit(true)" style="width: 100%; max-width: 28vh; margin-bottom: 0;">Edit</button>
             <button id="logoutButton" onclick="logout()" class="cool-btn" style="width: 100%; max-width: 28vh; background-color: rgb(228, 92, 92);"> Logout</button>
         </div>
+        <div class="friend-add-area mt-4 d-flex flex-column align-items-center">
+            <input type="text" id="friendUsername" placeholder="Enter friend's username" class="form-control mb-2" style="max-width: 28vh;">
+            <button class="cool-btn" onclick="addFriend()" style="width: 100%; max-width: 28vh;">Add Friend</button>
+        </div>
     </div>
     <div class="profile-info">
         <table>
@@ -39,5 +43,6 @@
                 <td class="campus"></td>
             </tr>
         </table>
+
     </div>
 </div>
