@@ -12,18 +12,18 @@
 }
 
 /* 42 AUTH BUTTON */
-.container {
+.loginContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.buttons {
+.loginPageButton {
     display: flex;
     flex-direction: column;
 }
 
-a {
+.coolLoginButton {
     z-index: 1;
     padding: 15px 20px;
     font: 13px 'Montserrat';
@@ -36,32 +36,32 @@ a {
     transition: .4s ease-in-out;
 }
 
-a:hover {
+.coolLoginButton:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.20);
 }
 
 @media (min-width: 417px) and (max-width: 567px) {
-    a {
+    .coolLoginButton {
         padding: 15px 30px;
         font: 16px 'Montserrat';
     }
 }
 
 @media (min-width: 568px) {
-    a {
+    .coolLoginButton {
         padding: 15px 50px;
         font: 23px 'Montserrat';
     }
 }
 
-.button2 {
+.coolLoginButton {
     color: black;
     background-color: #10FFB4;
     border-left: 3px transparent solid;
     border-right: 3px transparent solid;
 }
 
-.button2:hover {
+.coolLoginButton:hover {
     color: #10FFB4;
     background-color: black;
     border-left: #10FFB4 3px solid;

@@ -32,7 +32,7 @@ function logout() {
 
   if (!token) {
     console.log("No token found. Redirecting to login page.");
-    window.location.href = "/login/index.html";
+    window.location.href = "/login";
     return;
   }
 
@@ -46,14 +46,14 @@ function logout() {
     .then((response) => {
       if (response.ok) {
         localStorage.removeItem("token");
-        window.location.href = "/login/index.html";
+        window.location.href = "/login";
       } else {
         throw new Error("Logout request failed.");
       }
     })
     .catch((error) => {
       console.error("Error during logout process:", error);
-      window.location.href = "/login/index.html";
+      window.location.href = "/login";
     });
 }
 

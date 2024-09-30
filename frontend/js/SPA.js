@@ -4,55 +4,6 @@ token = localStorage.getItem("token");
 document.addEventListener("DOMContentLoaded", () => {
   const indicator = document.querySelector(".nav-indicator");
   const contentElement = document.getElementById("content");
-  const urlParams = new URLSearchParams(window.location.search);
-  let token = localStorage.getItem("token");
-
-  if (urlParams.has("token")) {
-    token = urlParams.get("token");
-    if (token) {
-      localStorage.setItem("token", token);
-      console.log("Token stored in localStorage:", token);
-      window.history.replaceState({}, document.title, window.location.pathname);
-    } else {
-      console.log("No token found in URL.");
-      window.location.href = "/login/index.html";
-      return;
-    }
-  }
-
-  // If not logged in, redirect to login page
-  if (!token) {
-    window.location.href = "/login/index.html";
-    return;
-  }
-
-  fetch("http://127.0.0.1:8000/api/home/", {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      Authorization: `Token ${token}`,
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error("Failed to check authentication.");
-      }
-    })
-    .then((data) => {
-      if (!data.is_authenticated) {
-        window.location.href = "/login/index.html";
-      } else {
-        user_profile = data["user"];
-        console.log(data);
-      }
-    })
-    .catch((error) => {
-      console.error("Error during authentication check:", error);
-      window.location.href = "/login/index.html";
-    });
 
   function handleIndicator(el) {
     if (el.classList.contains("nav-item")) {
@@ -75,13 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
     pathname = rtrim(pathname, "/");
     if (routes[pathname]) {
       fetch(routes[pathname].contentPath)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.text();
-        })
-        .then((html) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.text();
+      })
+      .then((html) => {
           contentElement.classList.remove("fade-in"); // Animasyonu sıfırla
           contentElement.style.opacity = 0; // Sayfa yüklendiğinde transparan yap
 
