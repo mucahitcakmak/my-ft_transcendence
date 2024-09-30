@@ -20,8 +20,7 @@
   overflow: hidden;
   max-width: 100%;
   background-color: rgb(24, 26, 27);
-  /*padding: 0 20px;*/
-  min-height: 70px;
+  min-height: 75px;
   max-height: 110px;
   height: 6vh;
   width: 50vw;
@@ -131,6 +130,17 @@ outline: none;
 
 
 /* CARD CSS */
+.right-card-col {
+  padding: 0;
+	margin: 0;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	height: auto;
+}
+
 .card.card-stats {
   display: flex;
   align-items: center;
@@ -138,11 +148,11 @@ outline: none;
   border-radius: 20px;
   background-color: rgb(24, 26, 27);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
   width: 100%;
   max-width: 16vw;
-  max-height: 16vh;
-  height: auto;
+  max-height: 100px;
+  height: 6vh;
+  min-height: 75px;
   transition: all 0.3s ease;
 }
 
@@ -288,17 +298,23 @@ outline: none;
 /* Ekran boyutuna göre otomatik yazı fontunu büyütme */
 @media (max-width: 860px) {
   .nav a  {
-      font-size: 16px;
+    font-size: 16px;
+  }
+  .score {
+    max-height: 15px;
+  }
+  .rank {
+    max-height: 15px;
   }
   .card-title {
-    font-size: .7875rem;
-  }
-  .h5.font-weight-bold {
     font-size: .6875rem;
   }
+  .h5.font-weight-bold {
+    font-size: .5875rem;
+  }
   .icon {
-    width: 45px;
-    height: 45px;
+    min-width: 35px;
+    min-height: 35px;
   }
 }
 

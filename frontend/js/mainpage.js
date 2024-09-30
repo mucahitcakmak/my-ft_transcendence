@@ -96,10 +96,32 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // CHAT JS
+var chatLog;
+var messageInput;
+var sendButton;
+
+function sendMessage(username="User", message=messageInput.value) {
+  if (message !== "") {
+    if (username !== "")
+      appendUserMessage(username, message);
+    else
+      appendUserMessage(message);
+    messageInput.value = "";
+    adjustInputHeight(); // Shrink the input box after sending
+  }
+}
+
+function appendUserMessage(username=usrname, message) {
+  var timestamp = getCurrentTimestamp();
+  var userMessage = `<div><span class="timestamp">${timestamp}</span>[${username}]: ${formatMessage(message)}</div>`;
+  chatLog.innerHTML += userMessage;
+  scrollToBottom();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  var chatLog = document.getElementById("chat-log");
-  var messageInput = document.getElementById("message-input");
-  var sendButton = document.getElementById("send-button");
+  chatLog = document.getElementById("chat-log");
+  messageInput = document.getElementById("message-input");
+  sendButton = document.getElementById("send-button");
 
   sendButton.addEventListener("click", function () {
     sendMessage();
@@ -124,50 +146,31 @@ document.addEventListener("DOMContentLoaded", function () {
     document.execCommand("insertHTML", false, formattedContent);
   });
 
-  function sendMessage() {
-    var message = messageInput.value;
-    if (message !== "") {
-      appendUserMessage(message);
-      messageInput.value = "";
-      adjustInputHeight(); // Shrink the input box after sending
-    }
-  }
-
-  function appendUserMessage(message) {
-    var timestamp = getCurrentTimestamp();
-    var userMessage = `<div><span class="timestamp">${timestamp}</span>[User]: ${formatMessage(
-      message
-    )}</div>`;
-    chatLog.innerHTML += userMessage;
-    scrollToBottom();
-  }
-
-  function scrollToBottom() {
-    chatLog.scrollTop = chatLog.scrollHeight;
-  }
-
-  function getCurrentTimestamp() {
-    var now = new Date();
-    var hours = now.getHours().toString().padStart(2, "0");
-    var minutes = now.getMinutes().toString().padStart(2, "0");
-    return `${hours}:${minutes}`;
-  }
-
-  function adjustInputHeight() {
-    messageInput.style.height = "auto";
-    messageInput.style.height = messageInput.scrollHeight + "px";
-  }
-
-  function formatMessage(message) {
-    // Check if the message starts with a code block indicator
-    if (message.startsWith("```")) {
-      return `<pre>${message}</pre>`;
-    }
-
-    // Escape HTML characters
-    message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-    // Format code blocks enclosed in backticks
-    return message.replace(/(```[\s\S]*?```)/g, "<pre>$1</pre>");
-  }
 });
+
+function scrollToBottom() {
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+function getCurrentTimestamp() {
+  var now = new Date();
+  var hours = now.getHours().toString().padStart(2, "0");
+  var minutes = now.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+
+function adjustInputHeight() {
+  messageInput.style.height = "auto";
+  messageInput.style.height = messageInput.scrollHeight + "px";
+}
+
+function formatMessage(message) {
+  // Check if the message starts with a code block indicator
+  if (message.startsWith("```")) {
+    return `<pre>${message}</pre>`;
+  }
+  // Escape HTML characters
+  message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  // Format code blocks enclosed in backticks
+  return message.replace(/(```[\s\S]*?```)/g, "<pre>$1</pre>");
+}

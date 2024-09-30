@@ -5,37 +5,39 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
         <title>42 PONG</title>
-		<link rel="icon" type="image/x-icon" href="img/42_logo.webp"></link>
+		<link rel="icon" type="image/x-icon" href="/img/42_logo.webp"></link>
 		<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-bold-rounded/css/uicons-bold-rounded.css'>
 		<!-- Bootstrap icons -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" ></link>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 		
 		<!-- MY CSS FILES -->
-		<link href="css/base_background.css" rel="stylesheet"></link>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css" rel="stylesheet">
-		<link href="css/root.css" rel="stylesheet"></link>
-		<link href="css/mainpage.css" rel="stylesheet"></link>
-		<link href="css/mainpage_chat.css" rel="stylesheet"></link>
-		<link href="css/leaderboard.css" rel="stylesheet"></link>
-		<link href="css/friends.css" rel="stylesheet"></link>
-		<link href="css/profile.css" rel="stylesheet"></link>
-		<link href="css/statistics.css" rel="stylesheet"></link>
-		<link href="css/matchs-history.css" rel="stylesheet"></link>
+		<link href="/css/base_background.css" rel="stylesheet"></link>
+		<link href="/css/root.css" rel="stylesheet"></link>
+		<link href="/css/mainpage.css" rel="stylesheet"></link>
+		<link href="/css/mainpage_chat.css" rel="stylesheet"></link>
+		<link href="/css/leaderboard.css" rel="stylesheet"></link>
+		<link href="/css/friends.css" rel="stylesheet"></link>
+		<link href="/css/profile.css" rel="stylesheet"></link>
+		<link href="/css/statistics.css" rel="stylesheet"></link>
+		<link href="/css/matchs-history.css" rel="stylesheet"></link>
 	</head>
 
 	<body>
 		<!-- MY JS -->
-		<script src="js/SPA.js"></script>
-		<script src="js/routes.js"></script>
-		<script src="js/mainpage.js"></script>
-		<script src="js/leaderboard.js"></script>
-		<script src="js/friends.js"></script>
-		<script src="js/profile.js"></script>
-		<script src="js/statistics.js"></script>
-		<script src="js/matchs-history.js"></script>
-		<script src="js/base_background.js"></script>
+		<script src="/js/routes.js"></script>
+		<script src="/js/mylib.js"></script>
+		<script src="/js/SPA.js"></script>
+		<script src="/js/mainpage.js"></script>
+		<script src="/js/mainpage_chat.js"></script>
+		<script src="/js/leaderboard.js"></script>
+		<script src="/js/friends.js"></script>
+		<script src="/js/profile.js"></script>
+		<script src="/js/statistics.js"></script>
+		<script src="/js/matchs-history.js"></script>
+		<script src="/js/base_background.js"></script>
 		<svg id="backGroundColor"></svg>
 
 		<!-- SAĞ VE SOL PANELİ BİRBİRİNDEN AYIR -->
@@ -66,12 +68,18 @@
 						<div class="row">
 						<div class="col">
 							<h5 class="card-title text-uppercase username"></h5>
-							<span class="h5 font-weight-bold mb-0" style="color: #5f5d59;">Score:</span>
-							<span class="h5 font-weight-bold mb-0">159</span>
-							<span class="h5 font-weight-bold mb-0" style="color: #5f5d59;">Rank:</span>
-							<span class="h5 font-weight-bold mb-0">31</span>
+							<div class="score-rank-group">
+								<div class="score">
+									<span class="h5 font-weight-bold mb-0" style="color: #5f5d59;">Score:</span>
+									<span class="h5 font-weight-bold mb-0">159</span>
+								</div>
+								<div class="rank">
+									<span class="h5 font-weight-bold mb-0" style="color: #5f5d59;">Rank:</span>
+									<span class="h5 font-weight-bold mb-0">31</span>
+								</div>
+							</div>
 						</div>
-						<div class="col">
+						<div class="col right-card-col">
 						<div class="icon icon-shape text-white rounded-circle shadow">
 							<img src="" alt="intra-image" class="card-image panel-pic">
 						</div>
@@ -79,9 +87,27 @@
 						</div>
 					</div>
 				</div>
-				<!-- CARD FINISH -->
 				<!-- CHAT -->
+
 				<div class="chat-panel">
+
+					<div class="match-chat-container user-select-none">
+						<div class="match-general-chat-btn text-white p-2 rounded user-select-none" data-bs-toggle="dropdown" aria-expanded="false">
+						  <div class="col justify-content-start d-flex align-items-center" style="text-align: start;">
+							<div class="dropdown-arrow">
+							  <i class="fi fi-br-caret-left"></i>
+							</div>
+							<img src="/img/world.png" class="chat-img-general shadow me-2" alt="Profile Image">
+							<div class="dropdown-chat-name">
+							  General Chat
+							</div>
+						  </div>
+						</div>
+						<ul class="dropdown-menu match-dropdown-menu" id="chat-list">
+							<!-- Buradaki veriler backendden çekiliyor -->
+						</ul>
+					  </div>
+
 					<div class="chat-container">
 						<div id="chat-scroll" class="chat-scroll">
 							<div class="chat-log text-white" id="chat-log">
@@ -89,7 +115,7 @@
 							</div>
 							</div>
 						<div class="input-container">
-								<textarea maxlength="35" rows="1" id="message-input" placeholder="Type your message..." rows="1"></textarea >
+								<textarea maxlength="35" rows="1" id="message-input" placeholder="Message..." rows="1"></textarea >
 								<button id="send-button" class="cool-btn">Send</button>
 						</div>
 					</div>
