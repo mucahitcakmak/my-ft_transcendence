@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // If not logged in, redirect to login page
   if (!token) {
     window.location.href = "/login/index.html";
     return;
@@ -72,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function loadPageBasedOnPath(pathname) {
-    pathname = rtrim(pathname, "/");
     if (routes[pathname]) {
       fetch(routes[pathname].contentPath)
         .then((response) => {
@@ -123,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     } else {
       // Eğer route bulunmuyorsa 404 sayfasını yükle
-      fetch("/pages/404.html")
+      fetch("pages/404.html")
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");

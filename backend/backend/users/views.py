@@ -1,18 +1,16 @@
 from rest_framework import generics, status
 from .models import User
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 from .serializers import CustomUserSerializer, FriendUserSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Friendship
 
-class UserListView(generics.ListCreateAPIView):
-    authentication_classes = []
-    permission_classes = []
 
+class UserListView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = CustomUserSerializer
+
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CustomUserSerializer

@@ -1,6 +1,6 @@
 /* CHAT CSS */
 .right-panel .chat-panel {
-  height: 64vh;
+  height: 65vh;
   width: 30vw;
   padding-right: 30px;
   padding-left: 30px;
@@ -8,7 +8,7 @@
 }
 
 .right-panel .chat-container {
-	height: 64vh;
+	height: 65vh;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -84,126 +84,4 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
-}
-
-
-
-/* Chat Select */
-.match-chat-container {
-  position: relative;
-}
-
-.match-general-chat-btn {
-  cursor: pointer;
-  height: 6vh;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #11151A;
-  transition: background-color 0.3s ease;
-  outline-style: solid;
-  outline-color: #4b4b4b83;
-}
-
-.match-general-chat-btn:hover {
-  background-color: #1b2027; /* Lightened on hover */
-}
-
-.match-dropdown-menu {
-  position: absolute;
-  top: 0px;
-  left: -17vw;
-  width: calc(17vw - 10px);
-  background-color: #11151A;
-  outline-style: solid;
-  outline-color: #4b4b4b83;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  display: none;
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.match-chat-container .dropdown-menu.show {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.match-dropdown-menu .li {
-  max-height: 5vh;
-}
-
-.dropdown-arrow {
-  width: 40px;
-  height: 40px;
-  margin-top: 3px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #929292;
-}
-
-.dropdown-arrow i {
-  font-size: 34px;
-}
-
-.dropdown-chat-name {
-  margin-bottom: 5px;
-  color: #929292;
-  font-size: calc(var(--base-font-size) + 3px);
-}
-
-.chat-img-general {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-left: 10px;
-  flex-shrink: 0;
-}
-
-.match-dropdown-menu .chat-img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-  flex-shrink: 0;
-}
-
-.match-dropdown-item .dropdown-item:active {
-  background-color: transparent !important;
-  color: inherit;
-  pointer-events: none;
-}
-
-.match-dropdown-item a {
-  color: #929292;
-  text-decoration: none;
-  margin-left: 10px;
-  font-size: calc(var(--base-font-size) + 1px);
-}
-
-.match-dropdown-item:hover a {
-  color: white;
-}
-
-.match-dropdown-item {
-  padding: 10px;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-.match-dropdown-item:hover {
-  background-color: #23282e;
-}
-
-.match-dropdown-item:active {
-  background-color: #1b2027;
-}
-
-.inactive {
-  background-color: #23282e;
 }

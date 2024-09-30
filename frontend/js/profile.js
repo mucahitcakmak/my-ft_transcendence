@@ -56,3 +56,44 @@ function logout() {
       window.location.href = "/login/index.html";
     });
 }
+
+function addFriend() {
+  const token = localStorage.getItem("token");
+  var friendUsername = document.getElementById("friendUsername").value;
+
+  if (!token) {
+    alert("You must be logged in to add a friend.");
+    return;
+  }
+
+  if (!friendUsername) {
+    alert("Please enter a username!");
+    return;
+  }
+
+  fetch(`http://127.0.0.1:8000/add-friend/${friendUsername}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Token ${token}`,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert("Friend request sent!");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else if (data.error) {
+        alert("Error adding friend: " + (data.error || "Unknown error"));
+      } else {
+        alert("Unexpected response from server.");
+      }
+    })
+    .catch((error) => {
+      alert("An error occurred: " + error.message);
+    });
+}
