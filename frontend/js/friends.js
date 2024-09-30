@@ -302,3 +302,9 @@ function acceptRequest(username) {
       alert(error.message);
     });
 }
+
+function handleButtonClick(clickedButton) {
+  const buttons = document.querySelectorAll('.friends-nav');
+  buttons.forEach(button => button.classList.remove('active'));
+  clickedButton.classList.add('active');
+}

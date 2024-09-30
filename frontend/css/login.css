@@ -1,28 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&family=Montserrat:wght@400;700;800;900&display=swap');
 
-#backGroundColor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-	overflow: hidden;
-	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-}
-
-/* 42 AUTH BUTTON */
+/* General Layout */
 .loginContainer {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 70%;
+    margin: 0 auto;
 }
 
-.loginPageButton {
+.formContainer, .authContainer {
+    flex: 1;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+.authContainer {
+    text-align: right;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 50%;
+    background: linear-gradient(transparent, #ffffff4b, transparent);
+    margin: 0 30px;
+    flex-shrink: 0;
+}
+
+/* 42 Auth Button */
 .coolLoginButton {
     z-index: 1;
     padding: 15px 20px;
@@ -32,11 +39,20 @@
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
-    margin: 1em;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
     transition: .4s ease-in-out;
+    color: black;
+    background-color: #10FFB4;
+    border-left: 3px transparent solid;
+    border-right: 3px transparent solid;
 }
 
 .coolLoginButton:hover {
+    color: #10FFB4;
+    background-color: black;
+    border-left: #10FFB4 3px solid;
+    border-right: #10FFB4 3px solid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.20);
 }
 
@@ -54,16 +70,40 @@
     }
 }
 
-.coolLoginButton {
-    color: black;
-    background-color: #10FFB4;
-    border-left: 3px transparent solid;
-    border-right: 3px transparent solid;
+.loginPageButton {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px; /* Add some space above */
 }
 
-.coolLoginButton:hover {
-    color: #10FFB4;
-    background-color: black;
-    border-left: #10FFB4 3px solid;
-    border-right: #10FFB4 3px solid;
+/* Center and adjust the position of the register button */
+.no-account-text {
+    margin-top: 10px; /* Set distance between login button and text */
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255, 255, 255, 0.6); /* Soft, subtle color */
+    text-align: center;
+    letter-spacing: 1px;
+}
+/* Add this to handle the spacing between input fields within the same row */
+.inputContainer {
+    flex: 1;
+    margin-right: 20px;
+}
+
+/* Remove the right margin from the last input in each row */
+.inputContainer:last-child {
+    margin-right: 0;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: rgba(0, 0, 0, 0.7);
+    width: auto;
+}
+
+.form-label {
+    color: rgba(255, 255, 255, 0.4); /* White label text with transparency */
 }

@@ -5,16 +5,12 @@ function loadPage(pageUrl) {
     fetch(pageUrl)
         .then(response => response.text())
         .then(html => {
-            console.log(pageUrl);
             if (lastData == pageUrl) {
-                console.log("tekrar giremezsin asko");
                 return;
             } else {
-                console.log("farklı bir deneme yaptığın için dataları temizledim!");
                 removeLoadedScripts();
             }
             document.getElementById('pageBody').innerHTML = html;
-            console.log("html dosyalarını yükledim!");
             if (pageUrl == "/pages/login/login.html") {
                 forLogin();
             }
@@ -111,12 +107,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (urlParams.has("token")) {
         token = urlParams.get("token");
         if (token) {
-          console.log("2");
           localStorage.setItem("token", token);
           console.log("Token stored in localStorage:", token);
           window.history.replaceState({}, document.title, window.location.pathname);
         } else {
-            console.log("3");
             console.log("No token found in URL.");
             if (window.location.pathname !== "/login") {
                 window.location.href = "/login";
@@ -144,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     })
     .then((response) => {
-        console.log("8");
         if (response.ok) {
             return response.json();
         } else {
@@ -158,10 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 loadPage("/pages/login/login.html");
             }
         } else {
-            console.log("10");
-            if (window.location.pathname !== "/home") {
-                window.location.href = "/home";
-            }
             loadPage("/pages/login/logged-in.html");
             user_profile = data["user"];
             console.log(data);

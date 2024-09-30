@@ -29,8 +29,10 @@ loginButton.addEventListener("click", function () {
         console.error("Error during login process:", error);
         userClicked = false;
       });
-  }
-});
+    }
+  });
+  
+document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -110,33 +112,45 @@ document
     isRegister = true;
 
     document.getElementById("loginForm").innerHTML = `
-      <div class="mb-3">
-          <label for="username" class="form-label text-white">Username</label>
-          <input type="text" class="form-control" id="username">
+      <!-- Row 1: Username and Email -->
+      <div class="d-flex mb-3 justify-content-between">
+          <div class="inputContainer">
+              <label for="username" class="form-label text-white">Username</label>
+              <input type="text" class="form-control" id="username">
+          </div>
+          <div class="inputContainer">
+              <label for="email" class="form-label text-white">Email</label>
+              <input type="email" class="form-control" id="email">
+          </div>
       </div>
-      <div class="mb-3">
-          <label for="email" class="form-label text-white">Email</label>
-          <input type="email" class="form-control" id="email">
+      <!-- Row 2: Name and Surname -->
+      <div class="d-flex mb-3 justify-content-between">
+          <div class="inputContainer">
+              <label for="name" class="form-label text-white">Name</label>
+              <input type="text" class="form-control" id="name">
+          </div>
+          <div class="inputContainer">
+              <label for="surname" class="form-label text-white">Surname</label>
+              <input type="text" class="form-control" id="surname">
+          </div>
       </div>
-      <div class="mb-3">
-          <label for="name" class="form-label text-white">Name</label>
-          <input type="text" class="form-control" id="name">
+      <!-- Row 3: Password and Confirm Password -->
+      <div class="d-flex mb-3 justify-content-between">
+          <div class="inputContainer">
+              <label for="password" class="form-label text-white">Password</label>
+              <input type="password" class="form-control" id="password">
+          </div>
+          <div class="inputContainer">
+              <label for="confirmPassword" class="form-label text-white">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword">
+          </div>
       </div>
-      <div class="mb-3">
-          <label for="surname" class="form-label text-white">Surname</label>
-          <input type="text" class="form-control" id="surname">
+      <!-- Buttons -->
+      <div class="loginPageButton d-flex justify-content-center align-items-center">
+          <button type="submit" class="btn coolLoginButton">REGISTER</button>
       </div>
-      <div class="mb-3">
-          <label for="password" class="form-label text-white">Password</label>
-          <input type="password" class="form-control" id="password">
-      </div>
-      <div class="mb-3">
-          <label for="confirmPassword" class="form-label text-white">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmPassword">
-      </div>
-      <div class="buttons">
-        <button type="submit" class="btn btn-primary mb-4">Register</button>
-        <a href="#" id="switchToLogin" class="button2">Back to Login</a>
+      <div class="d-flex justify-content-center align-items-center">
+        <a href="#" class="no-account-text" id="switchToLogin">Do you have an account?</a>
       </div>
   `;
     document.getElementById("registerButton").style.display = "none";
@@ -146,18 +160,19 @@ document
         e.preventDefault();
         isRegister = false;
         document.getElementById("loginForm").innerHTML = `
-        <div class="mb-3">
-          <label for="username" class="form-label text-white">Username</label>
-          <input type="text" class="form-control" id="username">
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label text-white">Password</label>
-          <input type="password" class="form-control" id="password">
-        </div>
-        <div class="buttons">
-          <button type="submit" class="btn btn-primary mb-4">Login</button>
-				</div>
+          <div class="mb-3">
+            <label for="username" class="form-label text-white">Username</label>
+            <input type="text" class="form-control" id="username">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label text-white">Password</label>
+            <input type="password" class="form-control" id="password">
+          </div>
+          <div class="loginPageButton d-flex justify-content-center align-items-center">
+              <button type="submit" class="btn coolLoginButton">Login</button>
+          </div>
     `;
         document.getElementById("registerButton").style.display = "block";
       });
   });
+});

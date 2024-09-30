@@ -1,9 +1,6 @@
-<div>
-    <h2 class="text-white">Friends List</h2>
-    <div id="content-container">
-        <button id="friend-button">Friends</button>
-        <button id="received-requests-button">Pending</button>
-        <button id="sent-requests-button">Sent</button>
-      </div>
-      <div id="content-display"></div>
+<div id="content-container" class="d-flex justify-content-start border-bottom mb-3">
+  <button id="friend-button" class="friends-nav nav-btn btn active"  onclick="handleButtonClick(this)">Friends</button>
+  <button id="received-requests-button" class="friends-nav nav-btn btn"  onclick="handleButtonClick(this)">Pending</button>
+  <button id="sent-requests-button" class="friends-nav nav-btn btn"  onclick="handleButtonClick(this)">Sent</button>
 </div>
+<div id="content-display"></div>
