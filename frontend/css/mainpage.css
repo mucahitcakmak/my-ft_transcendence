@@ -100,7 +100,7 @@
   margin: 0 auto;
 }
 
-.left-panel .search {
+.left-panel .findFriendSearch {
 	border-radius: 5px;
 	border: none;
 	background-color: transparent;
@@ -111,7 +111,7 @@
   max-width: 10vw;
 }
 
-.left-panel .search:focus {
+.left-panel .findFriendSearch:focus {
 outline: none;
 }
 

@@ -31,6 +31,7 @@ function forLoggedIn() {
     .then(() => loadExternalScript('/js/routes.js'))
     .then(() => loadExternalScript('/js/mylib.js'))
     .then(() => loadExternalScript('/js/profileDetailPopup.js'))
+    .then(() => loadExternalScript('/js/searchUser.js'))
     .then(() => loadExternalScript('/js/SPA.js'))
     .then(() => loadExternalScript('/js/mainpage.js'))
     .then(() => loadExternalScript('/js/mainpage_chat.js'))
@@ -158,7 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             loadPage("/pages/login/logged-in.html");
             user_profile = data["user"];
-            console.log(data);
         }
     })
     .catch((error) => {

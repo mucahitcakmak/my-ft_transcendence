@@ -13,4 +13,6 @@ const routes = {
 
   "/friends": { title: "Friends", contentPath: "/pages/friends.html" },
   "/profile": { title: "Profile", contentPath: "/pages/profile.html" },
+  "/user/": { title: "User Detail", contentPath: "/pages/user.html" },
+  "/usernotfound/": { title: "User Not Found", contentPath: "/pages/usernotfound.html" },
 };

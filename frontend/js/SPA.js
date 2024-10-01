@@ -22,8 +22,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function loadPageBasedOnPath(pathname) {
+  async function loadPageBasedOnPath(pathname) {
     pathname = rtrim(pathname, "/");
+    var pathname_username = null;
+    var finduser = false;
+
+    if (pathname.startsWith("/user/") && pathname.length > 6) {
+        pathname_username = pathname.substring(6);
+        finduser = await findUserAndGetData(pathname_username, token);
+        console.log("User found status: ", finduser, " | username: ", pathname_username);
+        if (finduser) {
+            pathname = "/user/";
+        } else {
+            pathname = "/usernotfound/";
+        }
+    }
+
     if (routes[pathname]) {
       fetch(routes[pathname].contentPath)
       .then((response) => {
@@ -33,15 +47,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.text();
       })
       .then((html) => {
-          contentElement.classList.remove("fade-in"); // Animasyonu sıfırla
-          contentElement.style.opacity = 0; // Sayfa yüklendiğinde transparan yap
+          contentElement.classList.remove("fade-in");
+          contentElement.style.opacity = 0;
 
           setTimeout(() => {
             contentElement.innerHTML = html;
             document.title = routes[pathname].title;
-            window.history.pushState(null, "", pathname);
+            if (pathname_username && finduser) {
+              window.history.pushState(null, "", pathname + pathname_username);
+            } else {
+              window.history.pushState(null, "", pathname);
+            }
 
-            console.log("tokenm: ", token);
             if (pathname === "/profile") {
               document.getElementsByClassName("picture")[0].src =
                 user_profile.profile_picture;
@@ -51,6 +68,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 user_profile.last_name;
             } else if (pathname === "/friends") {
               friend();
+            } else if (pathname === "/user/") {
+                document.getElementById("user-profilepicture").src = finduser.profile.profile_picture;
+                const userInfo = {
+                    "username": finduser.username,
+                    "username2": finduser.username,
+                    "firstandlastname": finduser.first_name + " " + finduser.last_name,
+                    "firstname": finduser.first_name,
+                    "lastname": finduser.last_name,
+                    "level": finduser.profile.level,
+                    "grade": finduser.profile.grade,
+                    "campus": finduser.profile.campus
+                };
+                Object.entries(userInfo).forEach(([key, value]) => {
+                    const element = document.getElementById(`user-${key}`);
+                    if (element) {
+                        element.textContent = value;
+                    } else {
+                        console.warn(`Element with id "user-${key}" not found.`);
+                    }
+                });
             }
             var elements = document.getElementsByClassName("username");
             for (var i = 0; i < elements.length; i++) {
