@@ -30,6 +30,7 @@ function forLoggedIn() {
     .then(() => loadExternalScript('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js'))
     .then(() => loadExternalScript('/js/routes.js'))
     .then(() => loadExternalScript('/js/mylib.js'))
+    .then(() => loadExternalScript('/js/profileDetailPopup.js'))
     .then(() => loadExternalScript('/js/SPA.js'))
     .then(() => loadExternalScript('/js/mainpage.js'))
     .then(() => loadExternalScript('/js/mainpage_chat.js'))
@@ -114,18 +115,18 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("No token found in URL.");
             if (window.location.pathname !== "/login") {
                 window.location.href = "/login";
-                loadPage("/pages/login/login.html");
             }
+            loadPage("/pages/login/login.html");
           return;
         }
     }
     
     // If not logged in, redirect to login page
     if (!token) {
-        loadPage("/pages/login/login.html");
         if (window.location.pathname !== "/login") {
             window.location.href = "/login";
         }
+        loadPage("/pages/login/login.html");
         return;
     }
     
@@ -141,6 +142,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (response.ok) {
             return response.json();
         } else {
+            if (window.location.pathname !== "/login") {
+                window.location.href = "/login";
+            }
+            loadPage("/pages/login/login.html");
             throw new Error("Failed to check authentication.");
         }
     })

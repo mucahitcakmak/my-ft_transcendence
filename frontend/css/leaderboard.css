@@ -51,7 +51,7 @@ table tbody tr:hover {
 	font-size: calc(var(--base-font-size) + 3px);
 }
 
-table tbody tr td:nth-child(2) {
+.leaderboard tbody tr td:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;

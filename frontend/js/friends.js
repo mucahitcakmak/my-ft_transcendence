@@ -46,6 +46,8 @@ function removeFriend(username) {
 
 function loadFriends() {
   const contentDisplay = document.getElementById("content-display");
+  contentDisplay.classList.remove("fade-in-friends");
+  contentDisplay.style.opacity = 0;
 
   fetch("http://127.0.0.1:8000/friends", {
     method: "GET",
@@ -64,14 +66,23 @@ function loadFriends() {
     })
     .then((data) => {
       renderFriends(data, contentDisplay);
+
+      setTimeout(() => {
+        contentDisplay.classList.add("fade-in-friends");
+        contentDisplay.style.opacity = 1;
+      }, 10);
     })
     .catch((error) => {
       contentDisplay.innerHTML = `<p>Error: ${error.message}</p>`;
+      contentDisplay.classList.add("fade-in-friends");
+      contentDisplay.style.opacity = 1;
     });
 }
 
 function loadReceivedRequests() {
   const contentDisplay = document.getElementById("content-display");
+  contentDisplay.classList.remove("fade-in-friends");
+  contentDisplay.style.opacity = 0;
 
   fetch("http://127.0.0.1:8000/received-requests", {
     method: "GET",
@@ -90,14 +101,24 @@ function loadReceivedRequests() {
     })
     .then((data) => {
       renderRequests(data, contentDisplay, "Received");
+
+      // Trigger the fade-in effect after content is updated
+      setTimeout(() => {
+        contentDisplay.classList.add("fade-in-friends");
+        contentDisplay.style.opacity = 1;
+      }, 10);
     })
     .catch((error) => {
       contentDisplay.innerHTML = `<p>Error: ${error.message}</p>`;
+        contentDisplay.classList.add("fade-in-friends");
+        contentDisplay.style.opacity = 1;
     });
 }
 
 function loadSentRequests() {
   const contentDisplay = document.getElementById("content-display");
+  contentDisplay.classList.remove("fade-in-friends");
+  contentDisplay.style.opacity = 0;
 
   fetch("http://127.0.0.1:8000/sent-requests", {
     method: "GET",
@@ -116,9 +137,17 @@ function loadSentRequests() {
     })
     .then((data) => {
       renderRequests(data, contentDisplay, "Sent");
+
+      // Trigger the fade-in effect after content is updated
+      setTimeout(() => {
+        contentDisplay.classList.add("fade-in-friends");
+        contentDisplay.style.opacity = 1;
+      }, 10);
     })
     .catch((error) => {
       contentDisplay.innerHTML = `<p>Error: ${error.message}</p>`;
+        contentDisplay.classList.add("fade-in-friends");
+        contentDisplay.style.opacity = 1;
     });
 }
 
@@ -131,7 +160,7 @@ function renderRequests(data, container, requestType) {
     let thead = document.createElement("thead");
     let tbody = document.createElement("tbody");
 
-    let headers = ["Profile", "Email", "Username", "First Name", "Last Name"];
+    let headers = ["Profile", "Username", "First Name", "Last Name"];
     let headerRow = document.createElement("tr");
     headers.forEach((header) => {
       let th = document.createElement("th");
@@ -156,10 +185,6 @@ function renderRequests(data, container, requestType) {
       }
       row.appendChild(profileImageCell);
 
-      let emailCell = document.createElement("td");
-      emailCell.textContent = request.email;
-      row.appendChild(emailCell);
-
       let usernameCell = document.createElement("td");
       usernameCell.textContent = request.username;
       row.appendChild(usernameCell);
@@ -173,19 +198,21 @@ function renderRequests(data, container, requestType) {
       row.appendChild(lastNameCell);
 
       let actionCell = document.createElement("td");
-      if (requestType === "Received") {
-        let acceptButton = document.createElement("button");
-        acceptButton.textContent = "Accept";
-        acceptButton.classList.add("accept-button");
 
+      actionCell.classList.add("row");
+      if (requestType === "Received") {
+        let acceptButton = createCoolBtn("Accept");
+        acceptButton.classList.add("accept-button");
+        acceptButton.classList.add("bg-success");
+        
         acceptButton.addEventListener("click", function () {
           acceptRequest(request.username);
         });
-
-        let rejectButton = document.createElement("button");
-        rejectButton.textContent = "Reject";
+        
+        let rejectButton = createCoolBtn("Reject");
         rejectButton.classList.add("reject-button");
-
+        rejectButton.classList.add("bg-danger");
+        
         rejectButton.addEventListener("click", function () {
           removeFriend(request.username);
         });
@@ -194,6 +221,14 @@ function renderRequests(data, container, requestType) {
         actionCell.appendChild(rejectButton);
       } else {
       }
+  
+      let infoButton = createCoolBtn("⋮")
+      infoButton.classList.add("bg-info");
+      infoButton.addEventListener("click", function () {
+        openPopUpWithUsername(request.username);
+      });
+      infoButton.style.maxWidth = "35px";
+      actionCell.appendChild(infoButton);
       row.appendChild(actionCell);
       tbody.appendChild(row);
     });
@@ -214,11 +249,10 @@ function renderFriends(data, container) {
 
     let headers = [
       "Profile",
-      "Email",
       "Username",
       "First Name",
       "Last Name",
-      "Action",
+      "",
     ];
     let headerRow = document.createElement("tr");
     headers.forEach((header) => {
@@ -228,10 +262,10 @@ function renderFriends(data, container) {
     });
     thead.appendChild(headerRow);
     table.appendChild(thead);
-
+    
     data.forEach((friend) => {
       let row = document.createElement("tr");
-
+      
       let profileImageCell = document.createElement("td");
       if (friend.profile_picture) {
         let img = document.createElement("img");
@@ -243,10 +277,6 @@ function renderFriends(data, container) {
         profileImageCell.textContent = "No Image";
       }
       row.appendChild(profileImageCell);
-
-      let emailCell = document.createElement("td");
-      emailCell.textContent = friend.email;
-      row.appendChild(emailCell);
 
       let usernameCell = document.createElement("td");
       usernameCell.textContent = friend.username;
@@ -260,10 +290,23 @@ function renderFriends(data, container) {
       lastNameCell.textContent = friend.last_name;
       row.appendChild(lastNameCell);
 
+  
       let actionCell = document.createElement("td");
-      let deleteButton = document.createElement("button");
-      deleteButton.textContent = "X";
-      deleteButton.classList.add("delete-button");
+      actionCell.classList.add("row");
+      
+      let playButton = createCoolBtn("1v1");
+
+      let deleteButton = createCoolBtn("X");
+      deleteButton.classList.add("bg-danger");
+      deleteButton.style.maxWidth = "50px";
+    
+      let infoButton = createCoolBtn("⋮")
+      infoButton.classList.add("bg-info");
+      infoButton.type = "button";
+      infoButton.style.maxWidth = "35px";
+      infoButton.addEventListener("click", function () {
+        openPopUpWithUsername(friend.username);
+      });
 
       deleteButton.addEventListener("click", function () {
         if (confirm(`Are you sure you want to remove ${friend.username}?`)) {
@@ -271,7 +314,9 @@ function renderFriends(data, container) {
         }
       });
 
+      actionCell.appendChild(playButton);
       actionCell.appendChild(deleteButton);
+      actionCell.appendChild(infoButton);
       row.appendChild(actionCell);
       tbody.appendChild(row);
     });
@@ -307,4 +352,13 @@ function handleButtonClick(clickedButton) {
   const buttons = document.querySelectorAll('.friends-nav');
   buttons.forEach(button => button.classList.remove('active'));
   clickedButton.classList.add('active');
+}
+
+function createCoolBtn (textContent) {
+  let button = document.createElement("button");
+  button.textContent = textContent;
+  button.classList.add("cool-btn");
+  button.classList.add("cool-btn-for-table");
+  button.classList.add("col");
+  return button;
 }

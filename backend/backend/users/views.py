@@ -18,6 +18,13 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     def get_object(self):
         return self.request.user
 
+class UserByUsernameView(generics.RetrieveAPIView):
+    authentication_classes = [TokenAuthentication]
+    
+    queryset = User.objects.all()
+    serializer_class = CustomUserSerializer
+    lookup_field = 'username'
+
 
 class AddFriendView(APIView):
     authentication_classes = [TokenAuthentication]
