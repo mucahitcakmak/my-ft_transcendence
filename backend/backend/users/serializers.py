@@ -14,7 +14,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'email', 'username', 'first_name', 'last_name', 'date_joined', 'profile', 'is_active']
+        fields = ['id', 'email', 'username', 'first_name', 'last_name', 'profile_picture', 'date_joined', 'profile', 'is_active']
 
 class FriendshipSerializer(serializers.ModelSerializer):
     from_user = CustomUserSerializer()
@@ -56,7 +56,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'password_confirm', 'first_name', 'last_name')
+        fields = ('profile_picture', 'username', 'email', 'password', 'password_confirm', 'first_name', 'last_name')
 
     def validate(self, data):
         if data['password'] != data['password_confirm']:
@@ -64,11 +64,13 @@ class UserCreateSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
+        profile_picture = validated_data.get('profile_picture')
         user = User(
             username=validated_data['username'],
             email=validated_data['email'],
             first_name=validated_data.get('first_name', ''),
-            last_name=validated_data.get('last_name', '')
+            last_name=validated_data.get('last_name', ''),
+            profile_picture=profile_picture
         )
         user.set_password(validated_data['password'])
         user.save()

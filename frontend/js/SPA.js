@@ -33,20 +33,20 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("User found status: ", finduser, " | username: ", pathname_username);
         if (finduser) {
             pathname = "/user/";
-        } else {
+          } else {
             pathname = "/usernotfound/";
+          }
         }
-    }
-
-    if (routes[pathname]) {
-      fetch(routes[pathname].contentPath)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.text();
-      })
-      .then((html) => {
+        
+        if (routes[pathname]) {
+          fetch(routes[pathname].contentPath)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.text();
+          })
+          .then((html) => {
           contentElement.classList.remove("fade-in");
           contentElement.style.opacity = 0;
 
@@ -60,47 +60,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (pathname === "/profile") {
-              document.getElementsByClassName("picture")[0].src =
-                user_profile.profile_picture;
-              document.getElementsByClassName("name")[0].textContent =
-                user_profile.first_name;
-              document.getElementsByClassName("surname")[0].textContent =
-                user_profile.last_name;
+              document.getElementById("my-picture").src = user_profile.profile_picture;
+              document.getElementById("my-username").textContent = user_profile.username;
+              document.getElementById("my-firstandlastname").textContent = user_profile.first_name + " " + user_profile.last_name;
+              document.getElementById("my-firstname").textContent = user_profile.first_name;
+              document.getElementById("my-lastname").textContent = user_profile.last_name;
             } else if (pathname === "/friends") {
               friend();
             } else if (pathname === "/user/") {
-                document.getElementById("user-profilepicture").src = finduser.profile.profile_picture;
-                const userInfo = {
-                    "username": finduser.username,
-                    "username2": finduser.username,
-                    "firstandlastname": finduser.first_name + " " + finduser.last_name,
-                    "firstname": finduser.first_name,
-                    "lastname": finduser.last_name,
-                    "level": finduser.profile.level,
-                    "grade": finduser.profile.grade,
-                    "campus": finduser.profile.campus
-                };
-                Object.entries(userInfo).forEach(([key, value]) => {
-                    const element = document.getElementById(`user-${key}`);
-                    if (element) {
-                        element.textContent = value;
-                    } else {
-                        console.warn(`Element with id "user-${key}" not found.`);
-                    }
-                });
+              showFoundUserData(finduser);
             }
-            var elements = document.getElementsByClassName("username");
-            for (var i = 0; i < elements.length; i++) {
-              elements[i].textContent = user_profile.username;
-            }
-            document.getElementsByClassName("panel-pic")[0].src =
-              user_profile.profile_picture;
+            document.getElementById("panel-username").innerHTML = user_profile.username;
+            document.getElementById("panel-pic").src = user_profile.profile_picture;
 
-            setActiveTabFromURL(); // Tabbar'ı güncelle
+            setActiveTabFromURL();
 
-            // Animasyonu başlat
             contentElement.classList.add("fade-in");
-            contentElement.style.opacity = 1; // Sayfa içeriğini yavaşça göster
+            contentElement.style.opacity = 1;
           }, 100);
         })
         .catch((error) =>
@@ -119,16 +95,16 @@ document.addEventListener("DOMContentLoaded", () => {
           return response.text();
         })
         .then((html) => {
-          contentElement.classList.remove("fade-in"); // Animasyonu sıfırla
-          contentElement.style.opacity = 0; // Sayfa yüklendiğinde transparan yap
-
+          contentElement.classList.remove("fade-in");
+          contentElement.style.opacity = 0;
+      
           setTimeout(() => {
             contentElement.innerHTML = html;
             document.title = "404 - Page Not Found";
-            window.history.pushState(null, "", pathname); // URL'yi yine de güncelle
+            window.history.pushState(null, "", pathname);
 
             contentElement.classList.add("fade-in");
-            contentElement.style.opacity = 1; // Sayfa içeriğini yavaşça göster
+            contentElement.style.opacity = 1;
           }, 100);
         })
         .catch((error) =>

@@ -39,53 +39,56 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   var username = document.getElementById("username").value;
   var password = document.getElementById("password").value;
 
-  if (isRegister) {
-    var email = document.getElementById("email").value;
-    var confirmPassword = document.getElementById("confirmPassword").value;
-    var name = document.getElementById("name").value;
-    var surname = document.getElementById("surname").value;
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-
-    var data = {
-      username: username,
-      email: email,
-      first_name: name,
-      last_name: surname,
-      password: password,
-      password_confirm: confirmPassword,
-    };
-
-    fetch("http://127.0.0.1:8000/api/register/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message === "User created successfully") {
-          alert("Successfully registered!");
-          setTimeout(function () {
-            window.location.reload();
-          }, 1000);
-        } else if (data.username) {
-          alert("error: " + data.username);
-        } else if (data.email) {
-          alert("error: " + data.email);
-        } else {
-          alert("error: cannot register");
-        }
-      });
-  } else {
-    var data = {
-      username: username,
-      password: password,
-    };
+    if (isRegister) {
+      var picture = document.getElementById("profile_picture").files[0];
+      var email = document.getElementById("email").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+      var name = document.getElementById("name").value;
+      var surname = document.getElementById("surname").value;
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+    
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+      console.log(picture);
+      var formData = new FormData();
+      formData.append("profile_picture", picture);
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("first_name", name);
+      formData.append("last_name", surname);
+      formData.append("password", password);
+      formData.append("password_confirm", confirmPassword);
+    
+      fetch("http://127.0.0.1:8000/api/register/", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === "User created successfully") {
+            alert("Successfully registered!");
+            setTimeout(function () {
+              window.location.reload();
+            }, 1000);
+          } else if (data.username) {
+            alert("error: " + data.username);
+          } else if (data.email) {
+            alert("error: " + data.email);
+          } else if (data.picture == undefined) {
+            alert("error: the picture field cannot be left blank.");
+          } else {
+            alert("error: cannot register");
+          }
+        });
+    } else {
+      var data = {
+        username: username,
+        password: password,
+      };
+    
 
     fetch("http://127.0.0.1:8000/api/login/", {
       method: "POST",
@@ -112,6 +115,11 @@ document
     isRegister = true;
 
     document.getElementById("loginForm").innerHTML = `
+      <!-- Row 0: Image  -->
+      <div class="mb-3 text-center">
+        <label for="profile_picture" class="form-label text-white">Profile Picture</label>
+        <input name="profile_picture" class="form-control mx-auto" style="width: fit-content;" type="file" id="profile_picture" value>
+      </div>
       <!-- Row 1: Username and Email -->
       <div class="d-flex mb-3 justify-content-between">
           <div class="inputContainer">

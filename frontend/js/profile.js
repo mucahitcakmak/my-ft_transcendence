@@ -1,6 +1,6 @@
 function toggleEdit(editMode) {
   const elements = document.querySelectorAll(
-    "#username, #name, #surname, #gamename"
+    "#my-gamename",
   );
   const button = document.querySelector(".cool-btn");
 
