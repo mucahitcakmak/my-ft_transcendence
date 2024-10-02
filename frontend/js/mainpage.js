@@ -95,82 +95,37 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 });
 
-// CHAT JS
-var chatLog;
-var messageInput;
-var sendButton;
-
-function sendMessage(username="User", message=messageInput.value) {
-  if (message !== "") {
-    if (username !== "")
-      appendUserMessage(username, message);
-    else
-      appendUserMessage(message);
-    messageInput.value = "";
-    adjustInputHeight(); // Shrink the input box after sending
-  }
-}
-
-function appendUserMessage(username=usrname, message) {
-  var timestamp = getCurrentTimestamp();
-  var userMessage = `<div><span class="timestamp">${timestamp}</span>[${username}]: ${formatMessage(message)}</div>`;
-  chatLog.innerHTML += userMessage;
-  scrollToBottom();
-}
-
+//Chatbox JS
 document.addEventListener("DOMContentLoaded", function () {
   chatLog = document.getElementById("chat-log");
   messageInput = document.getElementById("message-input");
   sendButton = document.getElementById("send-button");
+  var chatSocket = new WebSocket('ws://localhost:8000/ws/');
+  
+  chatSocket.onopen = function (e) {
+    console.log("Connected to chat socket");
+  };
 
+  chatSocket.onclose = function (e) {
+    console.error("Chat socket closed unexpectedly");
+  };
+
+  chatSocket.onmessage = function (e) {
+    var data = JSON.parse(e.data);
+    var message = data['message'];
+    var username = data['username'];
+    var messageElement = document.createElement("div");
+    messageElement.innerHTML = `<strong>${username}</strong>: ${message}`;
+    chatLog.appendChild(messageElement);
+  };
+  
   sendButton.addEventListener("click", function () {
-    sendMessage();
-  });
-
-  messageInput.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault();
-      sendMessage();
-    }
-  });
-
-  messageInput.addEventListener("input", function () {
-    adjustInputHeight();
-  });
-
-  messageInput.addEventListener("paste", function (event) {
-    event.preventDefault();
-    var clipboardData = event.clipboardData || window.clipboardData;
-    var pastedContent = clipboardData.getData("text/plain");
-    var formattedContent = formatMessage(pastedContent);
-    document.execCommand("insertHTML", false, formattedContent);
+    var message = messageInput.value;
+    chatSocket.send(JSON.stringify({
+      'username': user_profile.username,
+      'message': message
+    }));
+    messageInput.value = "";
   });
 
 });
-
-function scrollToBottom() {
-  chatLog.scrollTop = chatLog.scrollHeight;
-}
-
-function getCurrentTimestamp() {
-  var now = new Date();
-  var hours = now.getHours().toString().padStart(2, "0");
-  var minutes = now.getMinutes().toString().padStart(2, "0");
-  return `${hours}:${minutes}`;
-}
-
-function adjustInputHeight() {
-  messageInput.style.height = "auto";
-  messageInput.style.height = messageInput.scrollHeight + "px";
-}
-
-function formatMessage(message) {
-  // Check if the message starts with a code block indicator
-  if (message.startsWith("```")) {
-    return `<pre>${message}</pre>`;
-  }
-  // Escape HTML characters
-  message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  // Format code blocks enclosed in backticks
-  return message.replace(/(```[\s\S]*?```)/g, "<pre>$1</pre>");
-}

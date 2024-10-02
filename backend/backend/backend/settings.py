@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'base',
     'rest_framework',
     'corsheaders',
+    'channels',
+    'chat'
 ]
 
 MIDDLEWARE = [
@@ -94,6 +96,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
+ASGI_APPLICATION = 'backend.asgi.application'
+
+
+CHANNEL_LAYERS = {
+   'default': {
+       'BACKEND': 'channels_redis.core.RedisChannelLayer',
+       'CONFIG': {
+           "hosts": [(os.environ.get("REDIS_URL", "redis://redis_server:6379"))],
+       }
+   }
+}
 
 AUTH_USER_MODEL = 'users.User'
 # Database
